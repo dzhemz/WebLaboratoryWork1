@@ -9,6 +9,7 @@
 .top_and_down {
     background-color: #315EFF;
     width: 100%;
+    display: flex;
     color: #D0FFB0;
 }
 
@@ -55,4 +56,34 @@ aside {
 
 h1 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;    
+}
+
+.menu {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    height: 100%;
+}
+
+li {
+    margin: 2%;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    justify-content: center;
+}
+
+a:hover {
+    color:white;
+}
+
+a {
+    color:lightblue;
+    text-align: center;
+    height: max-content;
 }
