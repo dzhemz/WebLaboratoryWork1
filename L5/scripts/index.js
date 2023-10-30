@@ -3,7 +3,10 @@ import {footer} from './footer.js';
 import {User} from './user.js';
 import {registatrion, signUp} from './singup.js';
 import {singInContent, signIn} from './singin.js';
-import {accountHTML} from './account.js';
+import {Account} from './account.js';
+
+let account = new Account();
+
 
 let content = [header, footer]
 let user = null;
@@ -27,11 +30,11 @@ const setContent = () => {
 
 const standartConfiguration = () => {
 
-    if (user != null){
-        document.getElementById("toAccount").addEventListener("click"), () => {
-            //
-        }
-    }
+    document.getElementById("toAccount").addEventListener("click", () => {
+        clearContent();
+        addContent(account.getContent());
+        setContent();
+    });
 
     document.getElementById("singUp").addEventListener("click", () => {
         clearContent();
@@ -50,5 +53,5 @@ const standartConfiguration = () => {
 
 const clearContent = () => content = [header, footer];
 
-addContent(accountHTML);
+addContent(account.getContent());
 setContent();

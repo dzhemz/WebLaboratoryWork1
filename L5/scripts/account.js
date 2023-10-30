@@ -1,28 +1,66 @@
-let accountHTML = `
-    <main class="container-fluid">
-        <aside class="sidebar"></aside>
-        <section id="accountInfo" class="container shadow-sm p-3 mb-3 bg-body rounded">
-            <h2 class="h3">Ваш аккаунт</h2>
-            <p class="fs-4">Василий Петров</p>
-            <p class="fs-6">Номер телефона 8 (904) 637-81-92</p>
-            <p class="fs-6">Электронная почта vaspet@mail.run</p>
-            <p class="fs-6">Баланс 575.000 ₽</p>
-        </section>
+class Account {
+    user = null;
+    isWorker = false;
 
-        <section id="ordersInfo" class="container shadow-sm p-3 mb-3 bg-body rounded">
-            <h2 class="h3">Ваши заказы</h2>
+    setUser(newUser){
+        this.user = User;
+    }
+    
+    getContent(){
+        if (this.user == null){
+            return `<main class="container-fluid">
+                        <aside class="sidebar"></aside>
+                        <section id="accountInfo" class="container shadow-sm p-3 mb-3 bg-body rounded">
+                        <h2 class="h3">Информация об аккаунте</h2>
+                        <p class="fs-4">Вы не вошли в аккаунт</p>
+                        </section>
+                    </main>`;
+        }
+
+        else if (!this.isWorker) {
+            let result = [`<main class="container-fluid">
+                          <section id="accountInfo" class="container shadow-sm p-3 mb-3 bg-body rounded">
+                          <h2 class="h3">Ваш аккаунт</h2>
+                          <p class="fs-4">${user.name}</p>
+                          <p class="fs-6">Ваша электронная почта ${user.email}</p>
+                          <p class="fs-6">Баланс ${user.money} ₽</p>
+                          </section>`]
             
-            <!-- <p class="fs-6"> У вас нет заказов</p> -->
-            <p></p>
-            </section>
-        <aside class="sidebar"></aside>
-    </main>
-`;
+            result.push(this.generateBody());
+            result.push(`<aside class="sidebar"></aside>
+                        </main>`);
+        
+            return result.join("\n");
+        }
+    }
 
-const addOrdersToDisplay = (orders) => {
-    orders.map((order) => {
+    generateBody(){
+        let result = [`<section id="ordersInfo" class="container shadow-sm p-3 mb-3 bg-body rounded">`,
+                        `<div class="accordion" id="accordionPurchase">`];
 
-    });
+        result.push(this.user.QMercaPurchases.map( elem => {
+            return ` <div class="accordion-item">
+            <h2 class="accordion-header" id="heading${elem.id}">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapse${elem.id}">
+                ${elem.product} в количестве ${elem.number} 
+              </button>
+            </h2>
+            <div id="collapse${elem.id}" class="accordion-collapse collapse show" aria-labelledby="heading${elem.id}" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <strong>Подробная информация о заказе</strong>
+                <p class="fs-6">Сумма заказа ${elem.totalPrice}₽</p>
+                <p class="fs-6>Исполнитель ${elem.worker=="Nobody"?"Не назначен":elem.worker }</p>
+                <p class="fs-6">Статус заказа ${elem.status}</p>
+            </div>
+          </div>`;
+            }
+        ).join("\n"));
+        
+        result.push('</div>',
+            `</section>`);
+
+        return result.join("\n");
+    }
 }
 
-export {accountHTML};
+export {Account};
