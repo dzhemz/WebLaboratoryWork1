@@ -1,8 +1,10 @@
 import {validateMail, validateCurrentPasswords} from './validatePasswords.js'
+import {Communicator} from 'communication.js';
 
 const registatrion = `
 <main class="container-fluid">
-<form name="registration">
+<aside class="sidebar"></aside>
+<form name="registration" style="width=70%">
   <div class="mb-3">
     <label for="first_name" class="form-label">Имя</label>
     <input class="form-control" type="text" id="first_name">
@@ -40,6 +42,7 @@ const registatrion = `
 
   <button type="submit" class="btn btn-primary" id="submit">Зарегистрироваться</button>
 </form>
+<aside class="sidebar"></aside>
 </main>
 `
 const signUp = () => {

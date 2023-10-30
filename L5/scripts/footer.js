@@ -20,6 +20,7 @@ const footer = `
         <div><a class="mb-1 footerFont" id="singUp">Регистрация</a></div>
     </div>
 </div>
-</footer>`
+</footer>
+`
 
 export {footer};

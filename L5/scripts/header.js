@@ -11,19 +11,19 @@ const header = `
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Смартфоны</a>
+            <a class="nav-link" href="#">iPhone</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Ноутбуки</a>
+            <a class="nav-link" href="#">MacBook</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Видеокарты</a>
+            <a class="nav-link" href="#">Nvidia</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Процессоры</a>
+            <a class="nav-link" href="#">AMD</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Накопители данных</a>
+            <a class="nav-link" href="#">Samsung</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">О нас</a>

@@ -1,5 +1,5 @@
 class Communicator {
-    #orders = [];
+
     #products = [];
 
     #createRequest() {
@@ -37,29 +37,12 @@ class Communicator {
         else { Request.send(null);}
     } 
 
-    #setOrders(Request){
-        this.#orders = eval("(" + Request.responseText +  ")");
-    }
-
     #setProducts(Request){
         this.#products = eval("(" + Request.responseText + ")");
     }
 
-
-    getOrders(){
-        return this.#orders;
-    }
-
     getProducts(){
         return this.#products;
-    }
-
-    getOrdersOfClient(name){
-        this.#sendRequest("get", "localhost:8080/clientOrders/" + name, [], this.#setOrders);
-    }
-
-    getOrderOfWorker(name){
-        this.#sendRequest("get", "localhost:8080/workerOrders/" + name, [], this.#setOrders);
     }
 
     setExecutor(name, id){

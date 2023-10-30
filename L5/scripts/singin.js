@@ -1,5 +1,6 @@
 let singInContent = `
 <main class="container-fluid">
+<aside class="sidebar"></aside>
 <form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
@@ -16,8 +17,14 @@ let singInContent = `
     <label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
   </div>
 
+  <div class="mb-3 form-check">
+  <input type="checkbox" class="form-check-input" id="exampleCheck2">
+  <label class="form-check-label" for="exampleCheck2">Я сотрудник</label>
+  </div>
+
   <button type="submit" class="btn btn-primary" id="sing_in_btn">Войти</button>
 </form>
+<aside class="sidebar"></aside>
 </main>
 `;
 

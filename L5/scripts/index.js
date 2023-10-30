@@ -3,9 +3,12 @@ import {footer} from './footer.js';
 import {User} from './user.js';
 import {registatrion, signUp} from './singup.js';
 import {singInContent, signIn} from './singin.js';
+import {accountHTML} from './account.js';
 
 let content = [header, footer]
 let user = null;
+
+let customConfiguration = () => {};
 
 const addContent = (section) => {
     content.pop();
@@ -19,6 +22,7 @@ const setContent = () => {
     document.querySelector(".content").innerHTML = "";
     document.querySelector(".content").appendChild(div);
     standartConfiguration();
+    customConfiguration();
 }
 
 const standartConfiguration = () => {
@@ -46,5 +50,5 @@ const standartConfiguration = () => {
 
 const clearContent = () => content = [header, footer];
 
+addContent(accountHTML);
 setContent();
-
