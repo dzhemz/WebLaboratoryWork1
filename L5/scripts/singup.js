@@ -1,5 +1,4 @@
 import {validateMail, validateCurrentPasswords} from './validatePasswords.js'
-import {Communicator} from './communication.js';
 
 const registatrion = `
 <main class="container-fluid">
@@ -60,3 +59,4 @@ const setButtonSingUpEvent = () => {
 
 
 export {registatrion, signUp};
+

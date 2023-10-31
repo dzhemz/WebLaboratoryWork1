@@ -1,5 +1,11 @@
 class Communicator {
 
+    main = null;
+    constructor(main){
+        this.main = main;
+    }
+
+/*
     #products = [];
 
     #createRequest() {
@@ -77,6 +83,14 @@ class Communicator {
         "userPassword="+user.password,
         "userMoney="+user.money], () => {})
     }
+    */
+
+
+    async makeApiRequest(address, argument, type_method, new_body, controller) {
+        const response = await fetch(`http://localhost:8080/${address}/${argument}`, {method: type_method, headers: {'Content-Type': 'application/json'}, body: new_body});
+        response.then(controller);
+    }
+
 }
 
 export {Communicator};

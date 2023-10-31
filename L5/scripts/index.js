@@ -1,57 +1,58 @@
 import {header} from './header.js';
 import {footer} from './footer.js';
-import {User} from './user.js';
 import {registatrion, signUp} from './singup.js';
 import {singInContent, signIn} from './singin.js';
 import {Account} from './account.js';
 
-let account = new Account();
 
+class Index {
+    content = [header, footer];
+    account = new Account();
+    customConfiguration = () => {};
+    user = null;
 
-let content = [header, footer]
-let user = null;
+    stConfiguration(){
 
-let customConfiguration = () => {};
+        document.getElementById("toAccount").addEventListener("click", () => {
+            this.clearContent();
+            this.addContent(this.account.getContent());
+            this.setContent();
+        });
 
-const addContent = (section) => {
-    content.pop();
-    content.push(section);
-    content.push(footer);
+        document.getElementById("singUp").addEventListener("click", () => {
+            this.clearContent();
+            this.addContent(registatrion);
+            this.setContent();
+            signUp();
+        });
+
+        document.getElementById("singIn").addEventListener("click", () => {
+            this.clearContent();
+            this.addContent(singInContent);
+            this.setContent();
+            signIn();
+        })
+    }
+
+    clearContent(){this.content = [header, footer];}
+
+    addContent(section){
+        this.content.pop();
+        this.content.push(section);
+        this.content.push(footer);
+    }
+
+    setContent(){
+        const div = document.createElement("div");
+        div.innerHTML = this.content.join("");
+        document.querySelector(".content").innerHTML = "";
+        document.querySelector(".content").appendChild(div);
+        this.stConfiguration();
+        this.customConfiguration();
+    }
 }
 
-const setContent = () => {
-    const div = document.createElement("div");
-    div.innerHTML = content.join("");
-    document.querySelector(".content").innerHTML = "";
-    document.querySelector(".content").appendChild(div);
-    standartConfiguration();
-    customConfiguration();
-}
 
-const standartConfiguration = () => {
-
-    document.getElementById("toAccount").addEventListener("click", () => {
-        clearContent();
-        addContent(account.getContent());
-        setContent();
-    });
-
-    document.getElementById("singUp").addEventListener("click", () => {
-        clearContent();
-        addContent(registatrion);
-        setContent();
-        signUp();
-    });
-
-    document.getElementById("singIn").addEventListener("click", () => {
-        clearContent();
-        addContent(singInContent);
-        setContent();
-        signIn();
-    })
-}
-
-const clearContent = () => content = [header, footer];
-
-addContent(account.getContent());
-setContent();
+let index = new Index();
+index.addContent(index.account.getContent());
+index.setContent();

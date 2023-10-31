@@ -1,6 +1,11 @@
 class Account {
     user = null;
     isWorker = false;
+    main = null;
+
+    constructor (main){
+        this.main = main;
+    }
 
     setUser(newUser){
         this.user = User;
