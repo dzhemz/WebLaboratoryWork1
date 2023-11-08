@@ -29,10 +29,10 @@ const header = `
             <a class="nav-link" href="#">О нас</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Найти</button>
-        </form>
+        <div class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search" id="elementsToFind">
+          <button class="btn btn-outline-success" id="findElements">Найти</button>
+        </div>
       </div>
     </div>
   </nav>

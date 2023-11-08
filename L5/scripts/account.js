@@ -8,7 +8,7 @@ class Account {
     }
 
     setUser(newUser){
-        this.user = User;
+        this.user = newUser;
     }
     
     getContent(){
@@ -26,9 +26,9 @@ class Account {
             let result = [`<main class="container-fluid">
                           <section id="accountInfo" class="container shadow-sm p-3 mb-3 bg-body rounded">
                           <h2 class="h3">Ваш аккаунт</h2>
-                          <p class="fs-4">${user.name}</p>
-                          <p class="fs-6">Ваша электронная почта ${user.email}</p>
-                          <p class="fs-6">Баланс ${user.money} ₽</p>
+                          <p class="fs-4">${this.user.name}</p>
+                          <p class="fs-6">Ваша электронная почта ${this.user.email}</p>
+                          <p class="fs-6">Баланс ${this.user.money} ₽</p>
                           </section>`]
             
             result.push(this.generateBody());
@@ -43,19 +43,19 @@ class Account {
         let result = [`<section id="ordersInfo" class="container shadow-sm p-3 mb-3 bg-body rounded">`,
                         `<div class="accordion" id="accordionPurchase">`];
 
-        result.push(this.user.QMercaPurchases.map( elem => {
+        result.push(this.user.orders.map( elem => {
             return ` <div class="accordion-item">
             <h2 class="accordion-header" id="heading${elem.id}">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapse${elem.id}">
-                ${elem.product} в количестве ${elem.number} 
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${elem.id}" aria-expanded="false" aria-controls="collapse${elem.id}">
+                ${elem.product} в количестве ${elem.number} шт. 
               </button>
             </h2>
-            <div id="collapse${elem.id}" class="accordion-collapse collapse show" aria-labelledby="heading${elem.id}" data-bs-parent="#accordionExample">
+            <div id="collapse${elem.id}" class="accordion-collapse collapse" aria-labelledby="heading${elem.id}" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <strong>Подробная информация о заказе</strong>
                 <p class="fs-6">Сумма заказа ${elem.totalPrice}₽</p>
-                <p class="fs-6>Исполнитель ${elem.worker=="Nobody"?"Не назначен":elem.worker }</p>
-                <p class="fs-6">Статус заказа ${elem.status}</p>
+                <p class="fs-6">Исполнитель ${elem.worker==="Nobody"?"Не назначен":elem.worker }</p>
+                <p class="fs-6">Статус заказа: ${elem.status}</p>
             </div>
           </div>`;
             }

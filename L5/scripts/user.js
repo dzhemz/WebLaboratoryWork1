@@ -12,6 +12,14 @@ class User {
         this.money = money;
         this.orders = orders;
     }
+
+    equals(other){
+        return (this.email == other.email || this.name == other.name) && this.password == other.password;
+    }
+
+    addOrder(order){
+        this.orders.push(order);
+    }
 }
 
-export {User}
+export {User};

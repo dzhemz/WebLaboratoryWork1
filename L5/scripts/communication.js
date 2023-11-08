@@ -86,11 +86,34 @@ class Communicator {
     */
 
 
+
     async makeApiRequest(address, argument, type_method, new_body, controller) {
-        const response = await fetch(`http://localhost:8080/${address}/${argument}`, {method: type_method, headers: {'Content-Type': 'application/json'}, body: new_body});
-        response.then(controller);
+        try {
+            const response = await fetch(`http://localhost:8080/${address}/${argument}`, {
+                method: type_method,
+                headers: {
+                    'Content-Type': 'text/plain'
+                },
+                mode: 'cors'
+            });
+
+            const data = await response.text();
+            console.log(data);
+
+            if (controller) {
+                controller(data);
+            }
+        } catch (error) {
+            console.error("Ошибка при выполнении запроса:", error);
+        }
     }
 
+    async isNameUnique(name) {
+        console.log(name);
+        await this.makeApiRequest("isNameUnique", name, "GET", null, (response) => {
+            console.log(response);
+        });
+    }
 }
 
-export {Communicator};
+export { Communicator };

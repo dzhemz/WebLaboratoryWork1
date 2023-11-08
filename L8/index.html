@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Лабораторная работа 8</title>
+    </head>
+    <body style="padding: 5%;">
+        <div style="justify-content: center;">
+            <canvas class="content"></canvas>
+        </div>
+        <script src="node_modules/chart.js/dist/chart.umd.js"></script>
+        <script type="module">
+            const canvas = document.getElementsByClassName("content")
+            const values = []
+            fetch("https://financialmodelingprep.com/api/v3/historical-market-capitalization/AAPL?limit=100&apikey=0a6gj4WlxCjkTGMR1wbMgFx6oDxe50we", {contentType:"application/json"})
+            .then(response => response.json())
+            .then(element => values.push(element)).then(onDataAccepted)
+
+            function onDataAccepted(){
+                const labels = []
+                const content = []
+
+                values.at(0).forEach(element => {
+                    labels.push(element.date);
+                    content.push(element.marketCap);
+                    console.log(element);
+                });
+
+                labels.reverse();
+                content.reverse();
+                const data = {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label:'Капитализациия Apple за крайние 100 дней',
+                            data: content,
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        }
+                    ]
+                };
+                const config = {
+                    type: 'line',
+                    data: data,
+                };
+                new Chart(canvas, config)
+            }
+        </script>
+    </body>
+</html>
